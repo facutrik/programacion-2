@@ -1,0 +1,239 @@
+#Condicionales
+
+# CODIGO CONDICIONAL
+"""
+Hasta el momento nuestro codigo funciona de arriba hacia abajo,
+(de linea 1 hasta el final).
+Algunas veces deseas que un codigo se ejecute de acuerdo a ciertas condiciones.
+Por ejemplo, si un usuario esta logueado, si tiene saldo en su cuenta,
+si un chofer esta cerca, si alguien acepto tu invitacion a ser amigos.
+
+IF en python: 
+Operadores que se pueden utilizar para evaluar una condicion:
+== igual a
+!= diferente a, IF NOT en python
+> mayor
+>= mayor o igual a
+< menor
+<= menor o igual a  
+"""
+
+
+#Revisar si una condicion es mayor a, prueba de if
+balance = 500
+if balance > 0:
+    print("Puedes pagar, prueba")
+if balance > 501:
+    print("Puedes pagar") #Esto no se mostraria porq no se cumple la condicion
+
+
+"""
+if... else...
+Si una condicion es evaluada como verdadera se ejecutara un codigo.
+Pero algunas veces deseas tener otra accion que se realice en caso
+de que la condicion evaluada no se cumpla.
+"""
+
+
+#Ejemplo completo
+balances = 0 
+if balances > 0:
+    print("Puedes pagar")
+else:
+    print("No tienes saldo")
+
+
+#Likes, para valores iguales
+likes = 200
+if likes == 200:
+    print("\nExcelente, 200 likes")
+#Para mayor 
+likes = 200
+if likes > 200:
+    print("Excelente, 200 likes")
+else:
+    print("Casi llegas a los 200") #se mostraria el else aunque ya tengamos 200
+#Para poder mostrarlo
+if likes >= 200:
+    print("Excelente, 200 likes")
+else:
+    print("Casi llegas a los 200") 
+
+
+#IF con texto
+lenguaje = "Python"
+if lenguaje == "Python":
+    print("\nExcelente decision")
+
+
+#usamos IF NOT para diferente. != en todos los lenguajes pero no para python 
+lenguaje = "Python"
+if not lenguaje == "Python":
+    print("Excelente decision")
+else:
+    print("\nEs otro lenguaje") #Mmostraria el else
+#O tambien asi:
+lenguaje = "PHP"
+if not lenguaje == "Python":
+    print("Excelente decision") #aca mostramos el if not
+else:
+    print("Es otro lenguaje")
+
+
+#Evaluar un boolean
+usuario_autenticado = True
+if usuario_autenticado: #Tambien podemos poner el == True, pero ya esta puesto arriba y lo revisa solo
+    print("\nAcceso al sistema")
+else:
+    print("Debes iniciar sesion ")
+
+
+#Evaluar un elemento de una lista
+lenguajes =  ["Python", "Kotlin", "Java", "JavaScript"]
+if "PHP" in lenguajes:
+    print("PHP si esta")
+else:
+    print("\nNo esta en la lista") #Mostraria el else 
+#Si fuera asi 
+lenguajes =  ["Python", "Kotlin", "Java", "JavaScript", "PHP"]
+if "PHP" in lenguajes:
+    print("PHP si esta") #Ahora si muestra solo el if
+else:
+    print("No esta en la lista") 
+
+
+#IF aninados
+usuario_autenticado = True
+usuario_admin = True
+if usuario_autenticado:
+    if usuario_admin:
+        print("\nAcceso total") #voy a tener acceso total
+    else:
+        print("Acceso al sistema")
+else:
+    print("Debes iniciar sesion ")
+#Pero si uno esta False
+usuario_autenticado = True
+usuario_admin = False
+if usuario_autenticado:
+    if usuario_admin:
+        print("\nAcceso total")
+    else:
+        print("Acceso al sistema") #solo voy a tener acceso al sistema
+else:
+    print("Debes iniciar sesion ")
+#Si todo es False
+usuario_autenticado = False
+usuario_admin = False
+if usuario_autenticado:
+    if usuario_admin:
+        print("Acceso total")
+    else:
+        print("Acceso al sistema") 
+else:
+    print("Debes iniciar sesion ") #Tengo que iniciar sesion
+
+"""
+if... elif... else...
+Algunas ocasiones deseas evaluar una condicion u otra y realizar
+diferentes acciones segun sea el caso.
+En python es ELIF, en otro es else if.
+
+La sintaxis es:
+ocupacion = ""
+if ocupacion == "":
+    print("")
+elif ocupacion == ""
+    print("")
+else:
+    print("")
+"""
+
+#Ejemplo con elif
+ocupacion = "Estudiante"
+if ocupacion == "Estudiante":
+    print("\nTienes 50% de desc")
+elif ocupacion == "Jubilado":
+    print("Tienes 75% de desc")
+else:
+    print("Debes pagar el 100%")
+#Otro ejemplo agregado otro ELIF
+ocupacion = "Desempleado"
+if ocupacion == "Estudiante":
+    print("\nTienes 50% de desc")
+elif ocupacion == "Jubilado":
+    print("Tienes 75% de desc")
+elif ocupacion == "Desempleado":
+    print("Tienes un 10% de descuento") #Va a ejecutar el codigo que SI se cumpla
+else:
+    print("Debes pagar el 100%")
+
+
+"""
+Revisando 2 o mas condiciones:
+if y elif revisaran que se cumpla una condicion.
+Algunas veces requieres codigo que se revise que se cumplan 2 o mas condiciones,
+o que se cumpla al menos 1. 
+"""
+#Operadores AND y OR
+#OPERADORES AND
+usuario_logueado = True
+usuario_adm = False
+if usuario_logueado and usuario_adm: #Pedimos que se cumpla UNA condicion Y la OTRA
+    print("Administrador")
+elif usuario_logueado:
+    print("Acceso al sistema") #Nos mostraria este elif, ya que se cumple solo 1
+else:
+    print("Debes iniciar sesion")
+#OPERADORES OR
+if usuario_logueado or usuario_adm: #Pedimos que se cumpla UNA condicion O la OTRA
+    print("Administrador") #Mostraria esta porq se cumple al menos UNA condicion
+elif usuario_logueado:
+    print("Acceso al sistema")
+else:
+    print("Debes iniciar sesion")
+
+
+
+#IF Y FOR
+##UNIMOS IF Y FORl
+lenguajes = ["Python", "Kotlin", "Java", "JavaScript"]
+
+for lenguaje in lenguajes:
+    #print(lenguaje) tambien podemos poner print(l)
+    if lenguaje == "Pyhton":
+        print("Excelente, Python!!")
+    else:
+        print(lenguaje)
+#Otro ejemplo
+for lenguaje in lenguajes:
+    #print(lenguaje) tambien podemos poner print(l)
+    if lenguaje == "Pyhton":
+        print(lenguaje.upper()) #Para hacerlo Mayuscula
+    else:
+        print(lenguaje)
+
+
+
+#Objetos y Diccionario
+"""
+Un objeto es en cierta medida similar a un array, te permite 
+agrupar contenido de diferentes tipos de datos.
+Usualmente se accede a un elemento de un array por medio de su indice,
+en un objeto se accede por medio de una llave (key).
+Algunos lenguajes no soportan objetos, en python se utiliza algo 
+llamado Disctionary.
+"""
+
+#Ejemplos, creando un diccionario simple
+cancion = {
+    "artista" : "Metalica", #  llave : valor
+    "cancion" : "Enter",
+    "lanzamiento" : 1992,
+    "likes" : 3000
+}
+#Acceder a los elementos del diccionario
+print(cancion) #Muestra todo el diccionario
+print(cancion["artista"]) #Muestra solo el artista
+#Mezclar con un string
+print(f"Estoy escuchando a {cancion["artista"]}")
